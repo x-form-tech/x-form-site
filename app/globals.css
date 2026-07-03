@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ---- Dark theme (default) ---- */
+  :root {
+    --bg: 7 10 18;
+    --bg-muted: 11 17 30;
+    --bg-sunken: 5 7 13;
+    --panel: 14 21 35;
+    --panel-soft: 17 26 43;
+    --panel-strong: 21 33 53;
+    --fg: 234 240 251;
+    --fg-soft: 185 196 216;
+    --fg-muted: 122 135 158;
+    --brand-ink: 110 152 255; /* brand-300 */
+    --line: rgba(255, 255, 255, 0.08);
+    --grid-line: rgba(255, 255, 255, 0.05);
+    --body-glow:
+      radial-gradient(60rem 40rem at 82% -8%, rgba(59, 107, 255, 0.18), transparent 60%),
+      radial-gradient(48rem 32rem at 6% 4%, rgba(34, 211, 238, 0.1), transparent 55%);
+    --grad-from: #4a78ff;
+    --grad-via: #6e98ff;
+    --grad-to: #22d3ee;
+    color-scheme: dark;
+  }
+
+  /* ---- Light theme (previous look) ---- */
+  :root.light {
+    --bg: 247 249 252;
+    --bg-muted: 238 242 248;
+    --bg-sunken: 233 238 246;
+    --panel: 255 255 255;
+    --panel-soft: 248 250 253;
+    --panel-strong: 241 245 250;
+    --fg: 15 23 32;
+    --fg-soft: 70 88 111;
+    --fg-muted: 107 122 144;
+    --brand-ink: 37 68 196; /* brand-700 */
+    --line: rgba(15, 23, 42, 0.1);
+    --grid-line: rgba(15, 23, 42, 0.05);
+    --body-glow:
+      radial-gradient(60rem 40rem at 82% -8%, rgba(59, 107, 255, 0.1), transparent 60%),
+      radial-gradient(48rem 32rem at 6% 4%, rgba(34, 211, 238, 0.06), transparent 55%);
+    --grad-from: #2544c4;
+    --grad-via: #2f58f0;
+    --grad-to: #3b6bff;
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink antialiased;
+    text-rendering: optimizeLegibility;
+    /* Ambient brand glows fixed behind the whole page */
+    background-image: var(--body-glow);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-brand-500/30 text-white;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight text-ink;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-6 md:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-medium text-brandink;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(
+      to right,
+      var(--grad-from),
+      var(--grad-via),
+      var(--grad-to)
+    );
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Glassy dark card */
+  .card {
+    @apply rounded-2xl border border-line bg-panel/70 p-6 shadow-soft backdrop-blur-sm transition duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-brand-400/40 hover:shadow-glow;
+  }
+
+  /* Gradient hairline border on hover (kept cheap: box-shadow, no repaint of layout) */
+  .glass {
+    @apply border border-line bg-panel/60 backdrop-blur-md;
+  }
+}
+
+@layer utilities {
+  /* Faint technical grid, brighter on dark */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  /* Thin animated accent line */
+  .accent-line {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      theme("colors.brand.400"),
+      theme("colors.accent.DEFAULT"),
+      transparent
+    );
+  }
+
+  /* Gradient-border wrapper: 1px conic/linear frame via mask, GPU-cheap */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      140deg,
+      rgba(59, 107, 255, 0.6),
+      rgba(34, 211, 238, 0.25) 40%,
+      rgba(255, 255, 255, 0.04) 70%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Sheen sweep used on primary buttons */
+  .sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .sheen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+    transform: translateX(-120%);
+  }
+  .sheen:hover::after {
+    animation: shine 1s ease-in-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-shine,
+    .animate-pulse-soft,
+    .sheen:hover::after {
+      animation: none !important;
+    }
+  }
+}
