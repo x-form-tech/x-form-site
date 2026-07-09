@@ -32,28 +32,29 @@ const config: Config = {
         },
         // theme-aware brand text/link color (lighter on dark, deeper on light)
         brandink: "rgb(var(--brand-ink) / <alpha-value>)",
-        // `night` = ALWAYS-dark blocks (footer, final CTA) — fixed in both themes
+        // `night` = ALWAYS-dark blocks (footer, final CTA) — warm near-black (brand)
         night: {
-          DEFAULT: "#070A12",
-          soft: "#0E1523",
-          strong: "#152135",
+          DEFAULT: "#0E080A",
+          soft: "#1B1517",
+          strong: "#241C1F",
         },
-        // Brand — electric blue → cyan, reads "technological"
+        // Brand ramp centred on the official #454AFE (brand-200 = #BBBDFF)
         brand: {
-          50: "#EAF1FF",
-          100: "#CADBFF",
-          200: "#9EBEFF",
-          300: "#6E98FF",
-          400: "#4A78FF",
-          500: "#3B6BFF",
-          600: "#2F58F0",
-          700: "#2544C4",
-          800: "#1E3596",
-          900: "#1B2C74",
+          50: "#EDEEFF",
+          100: "#DCDDFF",
+          200: "#BBBDFF",
+          300: "#9A9DFF",
+          400: "#6E72FF",
+          500: "#454AFE",
+          600: "#3A3EE6",
+          700: "#2E31B8",
+          800: "#24268C",
+          900: "#1C1E6B",
         },
+        // theme-aware secondary highlight (cyan on tech themes, periwinkle on brand)
         accent: {
-          DEFAULT: "#22D3EE", // cyan highlight
-          soft: "#67E3F5",
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          soft: "rgb(var(--accent-soft) / <alpha-value>)",
         },
         // hairline borders (theme-aware)
         line: "var(--line)",
@@ -68,7 +69,7 @@ const config: Config = {
       boxShadow: {
         soft: "0 8px 30px rgba(0,0,0,0.45)",
         lift: "0 16px 50px rgba(0,0,0,0.6)",
-        glow: "0 20px 70px -25px rgba(59,107,255,0.65)",
+        glow: "0 20px 70px -25px rgba(69,74,254,0.65)",
         "glow-cyan": "0 20px 70px -25px rgba(34,211,238,0.5)",
       },
       maxWidth: { content: "1200px" },

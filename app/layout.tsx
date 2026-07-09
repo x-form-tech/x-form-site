@@ -44,11 +44,11 @@ export default function RootLayout({
   return (
     <html lang="ru" className={inter.variable} suppressHydrationWarning>
       <head>
-        {/* Apply saved theme before paint to avoid a flash. Default = dark. */}
+        {/* Apply saved theme before paint to avoid a flash. Default = brand. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light')}catch(e){}",
+              "try{var t=localStorage.getItem('theme');if(['brand','brand-light','dark','light'].indexOf(t)<0)t='brand';document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','brand')}",
           }}
         />
       </head>

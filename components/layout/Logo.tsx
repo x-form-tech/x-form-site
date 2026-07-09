@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
+/**
+ * Official X-Form lockup (from brand identity vector files): XF monogram with
+ * the signature #454AFE → #E4E4E7 gradient chevron + "X—FORM" letters.
+ * Letters render in `currentColor`, so the parent's text color decides the
+ * variant (black letters on light themes, white on dark — as in the guide).
+ */
 export function Logo({
   className,
   onDark = false,
@@ -11,27 +17,62 @@ export function Logo({
   return (
     <Link
       href="/"
-      className={cn("group inline-flex items-center gap-2.5", className)}
+      className={cn(
+        "group inline-flex items-center",
+        onDark ? "text-white" : "text-ink",
+        className
+      )}
       aria-label="X-Form — на главную"
     >
-      <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-brand-600 text-white shadow-soft transition group-hover:bg-brand-700">
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
-          <path
-            d="M6 6l12 12M18 6L6 18"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-          />
-        </svg>
-      </span>
-      <span
-        className={cn(
-          "text-lg font-semibold tracking-tight",
-          onDark ? "text-white" : "text-ink"
-        )}
+      <svg
+        viewBox="0 0 379 65"
+        className="h-6 w-auto transition-opacity group-hover:opacity-80 md:h-7"
+        fill="none"
+        aria-hidden
       >
-        X-Form
-      </span>
+        <path
+          d="M128.831 20.0202H113.836V39.9623H97.1879V64.8677H23.8672L44.1274 33.1477L23.8672 0.0766602H128.831V20.0202Z"
+          fill="currentColor"
+        />
+        <path
+          d="M50.775 0.0759277H64.7904H96.4096L64.4005 32.0849L97.182 64.8663H65.5628L50.775 64.8663L31.619 64.8663H0L32.7813 32.0849L0.77238 0.0759277H32.3915H50.775Z"
+          fill="url(#xf-logo-grad)"
+        />
+        <path
+          d="M341.644 64.8677V0.241502H356.6L359.832 27.8461L363.155 0.241502H378.019V64.8677H366.479V26.1843L363.248 53.3273H356.323L353.184 26.7383V64.8677H341.644Z"
+          fill="currentColor"
+        />
+        <path
+          d="M300.08 64.8677V0.241502H316.79C322.945 0.241502 327.592 1.65712 330.731 4.48837C333.932 7.25807 335.532 11.3818 335.532 16.8597V22.2144C335.532 28.5539 332.27 32.4623 325.746 33.9395V35.4166C329.192 36.0321 331.839 37.2939 333.685 39.2019C335.532 41.1099 336.455 43.7873 336.455 47.234V64.8677H322.883V45.6645C322.883 43.9411 322.299 42.6179 321.129 41.6946C319.96 40.7714 318.329 40.3098 316.236 40.3098H313.467V64.8677H300.08ZM313.467 28.677H315.498C319.806 28.677 321.96 26.8921 321.96 23.3223V18.0599C321.96 14.5516 319.806 12.7975 315.498 12.7975H313.467V28.677Z"
+          fill="currentColor"
+        />
+        <path
+          d="M277.173 64.8678C273.747 64.8678 270.704 63.9817 268.046 62.2093C265.446 60.3779 263.378 57.8671 261.842 54.6769C260.366 51.4866 259.627 47.8238 259.627 43.6883V21.0909C259.627 16.9554 260.366 13.3221 261.842 10.191C263.378 7.00076 265.446 4.51948 268.046 2.74713C270.704 0.915711 273.747 0 277.173 0C280.6 0 283.613 0.915711 286.212 2.74713C288.871 4.51948 290.938 7.00076 292.415 10.191C293.951 13.3221 294.719 16.9554 294.719 21.0909V43.6883C294.719 47.8238 293.951 51.4866 292.415 54.6769C290.938 57.8671 288.871 60.3779 286.212 62.2093C283.613 63.9817 280.6 64.8678 277.173 64.8678ZM277.173 52.4614C280.127 52.4614 281.604 49.9211 281.604 44.8403V20.0275C281.604 14.9468 280.127 12.4064 277.173 12.4064C274.219 12.4064 272.742 14.9468 272.742 20.0275V44.8403C272.742 49.9211 274.219 52.4614 277.173 52.4614Z"
+          fill="currentColor"
+        />
+        <path
+          d="M220.878 64.8677V0.0759622H257.346V12.8492H234.392V26.9183H251.7V39.7841H234.392V64.8677H220.878Z"
+          fill="currentColor"
+        />
+        <path d="M178.722 44.5048V32.472H215.19V44.5048H178.722Z" fill="currentColor" />
+        <path
+          d="M143.507 64.8677L153.966 32.4719L143.507 0.0759622H157.576L161.649 15.1632L165.999 0.0759622H179.975L169.609 32.4719L179.975 64.8677H165.999L161.649 49.7805L157.576 64.8677H143.507Z"
+          fill="currentColor"
+        />
+        <defs>
+          <linearGradient
+            id="xf-logo-grad"
+            x1="105.145"
+            y1="6.22371"
+            x2="11.1147"
+            y2="59.371"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#454AFE" />
+            <stop offset="1" stopColor="#E4E4E7" />
+          </linearGradient>
+        </defs>
+      </svg>
     </Link>
   );
 }

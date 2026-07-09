@@ -3,8 +3,70 @@
 @tailwind utilities;
 
 @layer base {
-  /* ---- Dark theme (default) ---- */
-  :root {
+  /* ===== Themes (switch via data-theme on <html>) =====
+     Channel-format vars (`R G B`) so Tailwind `/opacity` works.
+     Default = brand (official identity). */
+
+  /* ---- Brand (v3, official identity: warm black + #454AFE + periwinkle) ---- */
+  :root,
+  [data-theme="brand"] {
+    --bg: 14 8 10; /* #0E080A */
+    --bg-muted: 24 18 20;
+    --bg-sunken: 8 5 6;
+    --panel: 27 21 23; /* #1B1517 */
+    --panel-soft: 33 27 29;
+    --panel-strong: 42 34 37;
+    --fg: 230 230 230; /* #E6E6E6 */
+    --fg-soft: 178 172 176;
+    --fg-muted: 128 120 126;
+    --brand-ink: 187 189 255; /* #BBBDFF periwinkle */
+    --line: rgba(255, 255, 255, 0.09);
+    --grid-line: rgba(187, 189, 255, 0.05);
+    --accent: 187 189 255;
+    --accent-soft: 220 221 255;
+    --body-glow:
+      radial-gradient(62rem 42rem at 80% -10%, rgba(69, 74, 254, 0.3), transparent 60%),
+      radial-gradient(46rem 34rem at 2% 4%, rgba(187, 189, 255, 0.12), transparent 55%),
+      radial-gradient(42rem 30rem at 60% 112%, rgba(69, 74, 254, 0.16), transparent 60%);
+    --grad-from: #bbbdff;
+    --grad-via: #6e72ff;
+    --grad-to: #454afe;
+    --grain: 0.06;
+    --label-bg: #454afe;
+    --label-fg: #ffffff;
+    color-scheme: dark;
+  }
+
+  /* ---- Brand light (v4, identity guide inner pages: light gray + white cards + indigo) ---- */
+  [data-theme="brand-light"] {
+    --bg: 233 233 235; /* light neutral gray, as guide pages */
+    --bg-muted: 226 226 229;
+    --bg-sunken: 218 218 222;
+    --panel: 255 255 255; /* white rounded cards */
+    --panel-soft: 250 250 251;
+    --panel-strong: 243 243 246;
+    --fg: 27 21 23; /* #1B1517 warm black */
+    --fg-soft: 92 86 90;
+    --fg-muted: 138 131 135;
+    --brand-ink: 69 74 254; /* #454AFE — links/accents, as in the guide */
+    --line: rgba(27, 21, 23, 0.1);
+    --grid-line: rgba(27, 21, 23, 0.045);
+    --accent: 69 74 254;
+    --accent-soft: 110 114 255;
+    --body-glow:
+      radial-gradient(52rem 36rem at 104% 104%, rgba(69, 74, 254, 0.2), transparent 60%),
+      radial-gradient(44rem 30rem at -6% -8%, rgba(187, 189, 255, 0.35), transparent 55%);
+    --grad-from: #454afe;
+    --grad-via: #3a3ee6;
+    --grad-to: #0e080a;
+    --grain: 0.05;
+    --label-bg: #454afe;
+    --label-fg: #ffffff;
+    color-scheme: light;
+  }
+
+  /* ---- Dark tech (v2: cool navy + cyan) ---- */
+  [data-theme="dark"] {
     --bg: 7 10 18;
     --bg-muted: 11 17 30;
     --bg-sunken: 5 7 13;
@@ -14,20 +76,25 @@
     --fg: 234 240 251;
     --fg-soft: 185 196 216;
     --fg-muted: 122 135 158;
-    --brand-ink: 110 152 255; /* brand-300 */
+    --brand-ink: 154 157 255; /* brand-300 */
     --line: rgba(255, 255, 255, 0.08);
     --grid-line: rgba(255, 255, 255, 0.05);
+    --accent: 34 211 238;
+    --accent-soft: 103 227 245;
     --body-glow:
-      radial-gradient(60rem 40rem at 82% -8%, rgba(59, 107, 255, 0.18), transparent 60%),
+      radial-gradient(60rem 40rem at 82% -8%, rgba(69, 74, 254, 0.18), transparent 60%),
       radial-gradient(48rem 32rem at 6% 4%, rgba(34, 211, 238, 0.1), transparent 55%);
-    --grad-from: #4a78ff;
-    --grad-via: #6e98ff;
+    --grad-from: #6e72ff;
+    --grad-via: #9a9dff;
     --grad-to: #22d3ee;
+    --grain: 0;
+    --label-bg: #454afe;
+    --label-fg: #ffffff;
     color-scheme: dark;
   }
 
-  /* ---- Light theme (previous look) ---- */
-  :root.light {
+  /* ---- Light (v1: previous airy look) ---- */
+  [data-theme="light"] {
     --bg: 247 249 252;
     --bg-muted: 238 242 248;
     --bg-sunken: 233 238 246;
@@ -37,15 +104,20 @@
     --fg: 15 23 32;
     --fg-soft: 70 88 111;
     --fg-muted: 107 122 144;
-    --brand-ink: 37 68 196; /* brand-700 */
+    --brand-ink: 46 49 184; /* brand-700 */
     --line: rgba(15, 23, 42, 0.1);
     --grid-line: rgba(15, 23, 42, 0.05);
+    --accent: 34 211 238;
+    --accent-soft: 103 227 245;
     --body-glow:
-      radial-gradient(60rem 40rem at 82% -8%, rgba(59, 107, 255, 0.1), transparent 60%),
+      radial-gradient(60rem 40rem at 82% -8%, rgba(69, 74, 254, 0.1), transparent 60%),
       radial-gradient(48rem 32rem at 6% 4%, rgba(34, 211, 238, 0.06), transparent 55%);
-    --grad-from: #2544c4;
-    --grad-via: #2f58f0;
-    --grad-to: #3b6bff;
+    --grad-from: #2e31b8;
+    --grad-via: #3a3ee6;
+    --grad-to: #454afe;
+    --grain: 0;
+    --label-bg: #454afe;
+    --label-fg: #ffffff;
     color-scheme: light;
   }
 
@@ -61,8 +133,21 @@
     background-attachment: fixed;
   }
 
+  /* Subtle film grain — only when --grain > 0 (brand theme) */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--grain, 0);
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
+  }
+
   ::selection {
-    @apply bg-brand-500/30 text-white;
+    @apply bg-brand-500/40 text-white;
   }
 
   h1, h2, h3, h4 {
@@ -78,6 +163,15 @@
 
   .eyebrow {
     @apply inline-flex items-center gap-2 text-sm font-medium text-brandink;
+  }
+
+  /* Brand themes: eyebrow becomes a solid indigo label block */
+  [data-theme="brand"] .eyebrow,
+  [data-theme="brand-light"] .eyebrow {
+    border-radius: 0.55rem;
+    background: var(--label-bg);
+    padding: 0.4rem 0.8rem;
+    color: var(--label-fg);
   }
 
   .text-gradient {
@@ -114,13 +208,13 @@
     background-size: 44px 44px;
   }
 
-  /* Thin animated accent line */
+  /* Thin accent line (theme-aware via gradient vars) */
   .accent-line {
     background: linear-gradient(
       90deg,
       transparent,
-      theme("colors.brand.400"),
-      theme("colors.accent.DEFAULT"),
+      var(--grad-via),
+      var(--grad-to),
       transparent
     );
   }
@@ -137,9 +231,9 @@
     padding: 1px;
     background: linear-gradient(
       140deg,
-      rgba(59, 107, 255, 0.6),
-      rgba(34, 211, 238, 0.25) 40%,
-      rgba(255, 255, 255, 0.04) 70%
+      rgba(69, 74, 254, 0.6),
+      rgb(var(--accent) / 0.25) 40%,
+      var(--line) 70%
     );
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,

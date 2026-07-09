@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/Button";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -67,12 +67,12 @@ export function Header() {
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
-          <ThemeToggle />
+          <ThemeSwitcher />
           <Button href="/kontakty">Оставить заявку</Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle />
+          <ThemeSwitcher />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
