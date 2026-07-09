@@ -7,13 +7,14 @@ export const site = {
   description:
     "X-Form — внедрение, настройка и поддержка Битрикс24 для отделов продаж. Интеграции с 1С, телефонией и мессенджерами, миграция CRM, лицензии Битрикс24.",
   url: "https://x-form.ru",
-  email: "hello@x-form.ru", // TODO: реальный email
-  phone: "+7 (495) 000-00-00", // TODO: реальный телефон
-  phoneHref: "+74950000000", // TODO
-  telegram: "https://t.me/xform", // TODO
-  whatsapp: "https://wa.me/74950000000", // TODO
-  address: "Москва", // TODO: адрес офиса, если есть
-  workingHours: "Пн–Пт, 10:00–19:00 МСК",
+  // Contacts from the official brand identity (Айдентика X-Form.pdf)
+  email: "clients@x-form.ru",
+  phone: "+7 (4852) 60-86-80",
+  phoneHref: "+74852608680",
+  telegram: "https://t.me/x_form_st",
+  whatsapp: "https://wa.me/74852608680", // TODO: подтвердить, что на этом номере есть WhatsApp
+  address: "Ярославль", // TODO: уточнить полный адрес офиса
+  workingHours: "Пн–Пт, 10:00–19:00 МСК", // TODO: подтвердить график
 };
 
 // Доверительные цифры — замена партнёрскому бейджу. TODO: подтвердить реальные значения.
