@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, Mail, Send, MessageCircle, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, Send, MapPin, Clock } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { site } from "@/lib/site";
@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Контакты",
   description:
-    "Свяжитесь с X-Form: телефон, email, Telegram и WhatsApp. Оставьте заявку на бесплатный аудит Битрикс24.",
+    "Свяжитесь с X-Form: телефон, email, Telegram. Оставьте заявку на бесплатный аудит Битрикс24.",
 };
 
 export default function ContactsPage() {
@@ -25,12 +25,6 @@ export default function ContactsPage() {
       href: `mailto:${site.email}`,
     },
     { icon: Send, label: "Telegram", value: "Написать", href: site.telegram },
-    {
-      icon: MessageCircle,
-      label: "WhatsApp",
-      value: "Написать",
-      href: site.whatsapp,
-    },
   ];
 
   return (

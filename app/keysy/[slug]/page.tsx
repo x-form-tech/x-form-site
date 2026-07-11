@@ -65,10 +65,6 @@ export default function CasePage({ params }: { params: { slug: string } }) {
             ))}
           </dl>
 
-          <div className="mt-8 rounded-2xl border border-dashed border-line bg-surface-muted/50 p-5 text-sm text-ink-muted">
-            Раздел в наполнении: здесь будут детали проекта, скриншоты решения и
-            отзыв клиента. TODO — заменить на реальный кейс.
-          </div>
         </div>
       </section>
 

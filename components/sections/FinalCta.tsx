@@ -1,4 +1,4 @@
-import { Send, MessageCircle, Phone } from "lucide-react";
+import { Send, Phone } from "lucide-react";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { site } from "@/lib/site";
 
@@ -41,14 +41,6 @@ export function FinalCta() {
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-white/80 transition hover:border-white/40 hover:text-white"
               >
                 <Send className="h-4 w-4" /> Telegram
-              </a>
-              <a
-                href={site.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-white/80 transition hover:border-white/40 hover:text-white"
-              >
-                <MessageCircle className="h-4 w-4" /> WhatsApp
               </a>
             </div>
           </div>

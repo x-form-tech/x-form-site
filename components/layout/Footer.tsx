@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, Send, MessageCircle } from "lucide-react";
+import { Phone, Mail, Send } from "lucide-react";
 import { site } from "@/lib/site";
 import { footerNav } from "@/lib/nav";
 import { Logo } from "./Logo";
@@ -25,15 +25,7 @@ export function Footer() {
               >
                 <Send className="h-4 w-4" />
               </a>
-              <a
-                href={site.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-grid h-10 w-10 place-items-center rounded-full border border-white/15 transition hover:border-white/40 hover:text-white"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle className="h-4 w-4" />
-              </a>
+              {/* TODO: остальные соцсети — пользователь пришлёт ссылки отдельно */}
             </div>
           </div>
 
